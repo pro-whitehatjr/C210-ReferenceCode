@@ -49,7 +49,7 @@ def disconnectWithClient():
 
 
 
-# Teacher Activity 1
+
 def getFileSize(file_name):
     with open(file_name, "rb") as file:
         chunk = file.read()
@@ -70,7 +70,7 @@ def receiveMessage():
                 letter_list = chunk.decode().split(",")
                 listbox.insert(letter_list[0],letter_list[0]+":"+letter_list[1]+": "+letter_list[3]+" "+letter_list[5])
                 print(letter_list[0],letter_list[0]+":"+letter_list[1]+": "+letter_list[3]+" "+letter_list[5])
-            # Student Activity Boilerplate Code Start
+            
             elif(chunk.decode() == "access granted"):
                 labelchat.configure(text="")
                 textarea.insert(END,"\n"+chunk.decode('ascii'))
@@ -120,7 +120,7 @@ def browseFiles():
 
         ftp_server.dir()
         ftp_server.quit()
-        # Teacher Activity 1 Start
+        
         message=("send "+fname)
         if(message[:4] == "send"):
             print("Please wait .....\n")
@@ -130,9 +130,9 @@ def browseFiles():
             file_size = getFileSize("shared_files/"+sending_file)
             final_message = message + " " + str(file_size)
             SERVER.send(final_message.encode())
-            textarea.insert(END,"file successfully sent..")
+            textarea.insert(END,"In Process..")
 
-        # Teacher Activity 1 End
+       
 
     except FileNotFoundError:
         print("Cancle Button Pressed")
@@ -150,8 +150,7 @@ def sendMessage():
     textarea.see("end")
     text_message.delete(0, 'end')
 
-    # Downloading files
-    # Student Activity 2 Start
+    
     if(msgtosend == "y" or msgtosend == "Y"):
         #print("\nPlease wait file is downloading.....")
         textarea.insert(END,"\n"+"\nPlease wait file is downloading.....")
